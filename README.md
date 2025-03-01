@@ -88,7 +88,7 @@ ALTER TABLE employees ADD PARTITION (department='Operations');
 ALTER TABLE employees ADD PARTITION (department='Finance');
 ```
 
-###Insert Data from `temp_employees` into `employees`
+### Insert Data from `temp_employees` into `employees`
 ``` sql
 INSERT OVERWRITE TABLE employees_partitioned PARTITION (department='HR')
 SELECT emp_id, name, age, job_role, salary, project, join_date
@@ -224,8 +224,14 @@ FROM (
 WHERE ranking <= 3;
 ```
 ### Create a directory to get the outputs
-```mkdir -p /outputs/```
+```sh
+mkdir -p /outputs/
+```
 ### Copying files
-```hdfs dfs -get /user/hive/warehouse/output/ /outputs/```
+```sh
+hdfs dfs -get /user/hive/warehouse/output/ /outputs/
+```
 ### Copying it into local using docker
-```docker cp resourcemanager:outputs/ outputs/```
+```sh
+docker cp resourcemanager:outputs/ outputs/
+```
